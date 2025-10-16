@@ -5,13 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "next": "15.5.5",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "start": "next start"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

@@ -1,6 +1,12 @@
 # Project Structure for
 
 **the-qexai/**
+├── eslint.config.mjs
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.js
 ├── **public/**
 │ └── ico/svg
 ├── **src/**
@@ -8,14 +14,6 @@
 │ ├── globals.css
 │ ├── layout.tsx
 │ └── page.tsx
-├──.gitignore
-├── eslint.config.mjs
-├── next-env.d.ts
-├── next.config.ts
-├── package-lock.json
-├── package.json
-├── postcss.config.js
-├── README.md
 ├── tailwind.config.js
 ├── tsconfig.json
 └── README.md
