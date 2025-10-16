@@ -25,15 +25,13 @@ jobs:
         with:
           node-version: 20
 
-      # 3️⃣ Install dependencies
-      - name: Install dependencies
-        run: npm ci
+      # 3️⃣ Install & Build
+      - name: Install & Build
+        run: |
+          npm ci
+          npx next build
 
-      # 4️⃣ Build Next.js app using npx to ensure next is found
-      - name: Build Next.js app
-        run: npx next build && npx next export
-
-      # 5️⃣ Deploy to GitHub Pages
+      # 4️⃣ Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
