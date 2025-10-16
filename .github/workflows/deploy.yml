@@ -1,15 +1,21 @@
-name: Deploy Next.js to GitHub Pages
+name: Deploy Next.js site to GitHub Pages
 
 on:
   push:
     branches:
       - main
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      # 1️⃣ Checkout code
+      # 1️⃣ Checkout the repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -23,13 +29,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 4️⃣ Build Next.js site
-      - name: Build Next.js site
-        run: npm run build # No 'export', Next.js 15+ handles output automatically
+      # 4️⃣ Build Next.js app using npx to ensure next is found
+      - name: Build Next.js app
+        run: npx next build && npx next export
 
       # 5️⃣ Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out # Deploy the full /out folder
+          publish_dir: ./out
