@@ -2,15 +2,24 @@
   "name": "the-qexai",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://idofanish.github.io/the-qexai",
+  "author": "idofanish",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "serve": "npx serve -s out",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out -b gh-pages"
   },
   "dependencies": {
+    "framer-motion": "^12.23.24",
+    "lucide-react": "^0.545.0",
     "next": "^15.5.5",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-masonry-css": "^1.0.16",
+    "test": "^3.3.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -20,9 +29,10 @@
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
     "eslint": "^9",
-    "eslint-config-next": "15.5.5",
+    "eslint-config-next": "15.5.4",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.14",
-    "typescript": "^5"
+    "tailwindcss": "^4.1.15",
+    "typescript": "5.9.3"
   }
 }

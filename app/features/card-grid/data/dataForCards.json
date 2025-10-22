@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "AI Assurance Overview",
+    "link": "https://example.com/ai-assurance",
+    "text": "A high-level introduction to AI Assurance and its role in ensuring trust, safety, and reliability in intelligent systems."
+  },
+  {
+    "id": 2,
+    "title": "Testing Strategies",
+    "link": "https://example.com/testing-strategies",
+    "text": "Explore modern approaches to testing AI systems, from data validation to behavioral robustness testing."
+  },
+  {
+    "id": 3,
+    "title": "Data Validation Techniques",
+    "link": "https://example.com/data-validation",
+    "text": "Learn how to detect and correct data quality issues that can affect model performance and fairness.Ah, that makes sense 😅 — I removed the Masonry component in my last rewrite because you said you wanted a clean 4-column grid, and for classic fixed-column grids, you actually don’t need Masonry. Tailwind’s grid handles responsive columns with uniform gaps perfectly.Here’s the reasoning:"
+  },
+  {
+    "id": 4,
+    "title": "Model Robustness",
+    "link": "https://example.com/model-robustness",
+    "text": "Understand how to evaluate and improve model resilience against noise, drift, and adversarial conditions."
+  },
+  {
+    "id": 5,
+    "title": "Bias Detection",
+    "link": "https://example.com/bias-detection",
+    "text": "Discover tools and frameworks to identify hidden biases in AI models and datasets."
+  },
+  {
+    "id": 6,
+    "title": "Explainable AI",
+    "link": "https://example.com/explainable-ai",
+    "text": "Dive into methods that make model decisions interpretable to humans without compromising performance."
+  },
+  {
+    "id": 7,
+    "title": "Risk Management",
+    "link": "https://example.com/risk-management",
+    "text": "A practical guide to identifying, assessing, and mitigating AI-related risks in production environments."
+  },
+  {
+    "id": 8,
+    "title": "Performance Metrics",
+    "link": "https://example.com/performance-metrics",
+    "text": "Understand the right metrics to measure model accuracy, fairness, and real-world effectiveness."
+  },
+  {
+    "id": 9,
+    "title": "Security Audits",
+    "link": "https://example.com/security-audits",
+    "text": "Learn how to conduct audits for model security and data privacy vulnerabilities in AI systems."
+  },
+  {
+    "id": 10,
+    "title": "Compliance Checks",
+    "link": "https://example.com/compliance-checks",
+    "text": "Review how AI systems align with emerging global regulatory frameworks and industry standards."
+  },
+  {
+    "id": 11,
+    "title": "Feature Importance",
+    "link": "https://example.com/feature-importance",
+    "text": "Explore feature attribution techniques to understand which inputs influence AI predictions most."
+  },
+  {
+    "id": 12,
+    "title": "Continuous Monitoring",
+    "link": "https://example.com/continuous-monitoring",
+    "text": "Set up real-time pipelines to detect performance drift, data anomalies, and ethical concerns post-deployment."
+  },
+  {
+    "id": 13,
+    "title": "Scenario Analysis",
+    "link": "https://example.com/scenario-analysis",
+    "text": "Run simulations to test model behavior across different risk, demographic, or environmental scenarios."
+  },
+  {
+    "id": 14,
+    "title": "Model Lifecycle",
+    "link": "https://example.com/model-lifecycle",
+    "text": "Manage the full lifecycle of AI models—from design and testing to deployment and retirement."
+  },
+  {
+    "id": 15,
+    "title": "AI Governance",
+    "link": "https://example.com/ai-governance",
+    "text": "Establish transparent policies, ethical standards, and oversight mechanisms for responsible AI development."
+  }
+]

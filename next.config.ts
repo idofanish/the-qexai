@@ -1,20 +1,17 @@
-import type { NextConfig } from "next";
+// next.config.js
+/** @type {import('next').NextConfig} */
 
-const nextConfig: NextConfig = {
-  //Required for GitHub Pages static deployment
-  output: "export",
-
-  // GitHub Pages serves your site under /the-qexai/, not root
-  basePath: "/the-qexai",
-  assetPrefix: "/the-qexai/",
-
-  // Prevent Next.js image optimization (not supported in static export)
+const nextConfig = {
+    output: 'export', // replaces `next export`
   images: {
-    unoptimized: true,
+    unoptimized: true, // required for static export if you use <Image>
   },
-
-  // Ensures pages end with /index.html for GitHub Pages routing
-  trailingSlash: true,
-};
+/*
+  //optional: if deploying to GitHub Pages
+  //basePath: '/the-qexai',
+  //assetPrefix: '/the-qexai/',
+*/
+  };
 
 export default nextConfig;
+
