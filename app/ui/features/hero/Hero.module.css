@@ -1,0 +1,35 @@
+
+
+.heroSection {
+  position: relative;
+  margin-top: -6rem; /* adjust if needed */
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 30vh;
+  margin-bottom: var(--spacing-lg); /* 24px space below hero */
+}
+
+.heroTitle {
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: 600; /* font-semibold */
+  margin-bottom: 0.1rem; /* mb-2 */
+}
+
+.heroSubtitle {
+  font-size: 1.15rem; /* text-lg */
+  font-weight: 200; /* font-light */
+}
+
+.textDeepBlue{
+  color: #0f006f;
+}
+
+.textAmber{
+  color: #ffbd59;
+}
+
+

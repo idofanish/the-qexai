@@ -20,7 +20,10 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md p-4 shadow-sm">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-[#0f006f] font-bold text-xl">qeXAI</h1>
+        <h1 className="text-[#0f006f] font-bold text-xl">The qe
+         <span className="text-[#ffbd59]">XAi</span> 
+         <span>.com</span> 
+        </h1>
         <nav className="space-x-4">
           <a href="#articles" className="text-[#0f006f] hover:text-[#ffbd59]">Articles</a>
           <a href="#contact" className="text-[#0f006f] hover:text-[#ffbd59]">Contact</a>

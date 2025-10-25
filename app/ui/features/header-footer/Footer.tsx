@@ -10,11 +10,14 @@ export default function Footer() {
           href="https://www.linkedin.com/company/theqexai"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-[#ffbd59]"
-        >
-          LinkedIn
+          className="hover:text-[#ffbd59] font-light"
+        >LinkedIn © 2025
         </a>
-        <span>© 2025 The qeXAI</span>
+        <span ></span>
+         <span className="text-[#0f006f]  text-xl">The qe
+         <span className="text-[#ffbd59]">XAi</span> 
+         <span>.com</span> 
+        </span>
       </div>
     </footer>
   );

@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font colors */
+.text-primary {
+  color: #0f006f; /* previously in heroSection */
+}
+
+.text-accent {
+  color: #ffbd59; /* previously in heroHighlight */
+}
+
+/* Typography (optional) */
+.font-light {
+  font-weight: 300;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}

@@ -1,11 +1,10 @@
 // app/layout.tsx
-import '../styles/globals.css';
-import Header from './features/header-footer/Header';
-import Footer from './features/header-footer/Footer';
-import { Inter } from 'next/font/google';
+import '@/app/ui/ui.global.css';
+import { inter } from '@/app/ui/fonts';
+import Header from '@/app/ui/features/header-footer/Header';
+import Footer from '@/app/ui/features/header-footer/Footer';
 import React from 'react';
 
-const inter = Inter({ subsets: ['latin'] });
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -14,18 +13,15 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={`${inter.className} font-sans bg-gray-50 text-gray-900 h-screen overflow-hidden flex flex-col`}>
-        
+      <body className={`${inter.className} font-sans bg-white h-screen overflow-hidden flex flex-col`}>        
         {/* Frozen Header */}
-        <Header />
-
+        {<Header />}
         {/* Scrollable main content */}
         <main className="flex-1 overflow-auto pt-24 pb-24">
           {children}
         </main>
-
         {/* Frozen Footer */}
-        <Footer />
+       {<Footer />}
       </body>
     </html>
   );

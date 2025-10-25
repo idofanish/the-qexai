@@ -1,33 +1,5 @@
-# Project Structure for
+## Next.js App Router Course - Starter
 
-**the-qexai/**
-├── eslint.config.mjs
-├── next-env.d.ts
-├── next.config.ts
-├── package-lock.json
-├── package.json
-├── postcss.config.js
-├── **public/**
-│ └── ico/svg
-├── **src/**
-│ └── **app/**
-│ ├── globals.css
-│ ├── layout.tsx
-│ └── page.tsx
-├── tailwind.config.js
-├── tsconfig.json
-└── README.md
+This is the starter template for the Next.js App Router Course. It contains the starting code for the dashboard application.
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+For more information, see the [course curriculum](https://nextjs.org/learn) on the Next.js Website.

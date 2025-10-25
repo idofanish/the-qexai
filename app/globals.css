@@ -1,14 +1,34 @@
-@import "tailwindcss";
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
-
-/* Hide scrollbar for all horizontal scroll containers */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+:root {
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 3rem;      /* 48px */
 }
 
-.scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none;    /* Firefox */
+
+
+/* Font colors */
+.text-primary {
+  color: #0f006f; /* dark blue */
+}
+
+.text-accent {
+  color: #ffb84d; /* orange/yellow accent */
+}
+
+/* Typography */
+.font-light {
+  font-weight: 300;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
 }

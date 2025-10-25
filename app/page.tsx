@@ -1,12 +1,12 @@
 // app/page.tsx
-import Hero from './features/hero/Hero';
-import CardGrid from './features/card-grid/CardGrid';
+import Hero from '@/app/ui/features/hero/Hero';
+import Cards from '@/app/ui/features/cards/Card';
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
-      <CardGrid />
+     <Hero />
+     <Cards />
     </>
   );
 }
