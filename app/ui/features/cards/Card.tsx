@@ -21,7 +21,8 @@ const breakpointColumnsObj = {
 
 const Cards = () => {
   const [cards, setCards] = useState<Card[]>([]);
-  const [loading, setLoading] = useState(true);
+  //const [loading, setLoading] = useState(true);
+  const [setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
 useEffect(() => {
