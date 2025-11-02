@@ -7,7 +7,9 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "prepare": "husky",
-    "test": "echo \"✅ No tests yet – skipping.\""
+    "test": "echo \"✅ No tests yet – skipping.\"",
+    "prepush": "pnpm exec tsc --noEmit && pnpm exec playwright test --reporter=line",
+    "commit": "cz"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -50,6 +52,8 @@
     "@types/react-dom": "19.0.3",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.2",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.38.0",
     "eslint-config-next": "16.0.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -63,5 +67,10 @@
       "bcrypt",
       "sharp"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }

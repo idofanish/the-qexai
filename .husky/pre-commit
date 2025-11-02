@@ -1,2 +1,3 @@
-pnpm lint
-pnpm exec playwright test
+#!/usr/bin/env sh
+echo "✅ Running lint before commit..."
+pnpm exec next lint
