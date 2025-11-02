@@ -1,19 +1,43 @@
-"use client";
-import React from "react";
-import Masonry from "react-masonry-css";
-import CardItem from "./CardItem";
-import data from "@/app/data/dataForCards.json";
-import styles from "./Cards.module.css";
+'use client';
+import React, { useEffect, useState } from 'react';
+import Masonry from 'react-masonry-css';
+import CardItem from './CardItem';
+import styles from './Cards.module.css';
+//import Spinner from '@/app/ui/features/TBD_pageloader/Spinner';
+
+interface Card {
+  id: number;
+  title: string;
+  text: string;
+  link: string;
+}
 
 const breakpointColumnsObj = {
   default: 4,
   1100: 3,
   700: 2,
-  500: 1
+  500: 1,
 };
 
 const Cards = () => {
-  if (!data || data.length === 0) return <p>No cards found.</p>;
+  const [cards, setCards] = useState<Card[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+useEffect(() => {
+    fetch('/api/site/cards')
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed to load cards');
+        return res.json();
+      })
+      .then((data) => setCards(data))
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+    //if (loading) return <Spinner size={12} />;
+  if (error) return <p className="text-red-500 text-center">{error}</p>;
+
 
   return (
     <Masonry
@@ -21,10 +45,10 @@ const Cards = () => {
       className={styles.myMasonryGrid}
       columnClassName={styles.myMasonryGridColumn}
     >
-      {data.map((item) => (
+      {cards.map((item) => (
         <CardItem
           key={item.id}
-          id={item.id}
+//          id={item.id}
           title={item.title}
           text={item.text}
           link={item.link}
@@ -35,4 +59,3 @@ const Cards = () => {
 };
 
 export default Cards;
-

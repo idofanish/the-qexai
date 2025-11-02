@@ -1,0 +1,12 @@
+{
+  "copyrightText": "@2025 qeXAI.com. All rights reserved.",
+  "socialLinks": [
+    { "label": "GitHub", "href": "https://github.com/idofanish" },
+    { "label": "LinkedIn", "href": "https://linkedin.com/in/idofanish" }    
+  ],
+  "navLinks": [
+    { "label": "Privacy Policy", "href": "#privacy" },
+    { "label": "Terms of Service", "href": "#terms" },
+    { "label": "Contact", "href": "#contact" }
+  ]
+}

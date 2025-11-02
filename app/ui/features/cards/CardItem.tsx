@@ -3,30 +3,23 @@ import React from "react";
 import styles from "./Cards.module.css";
 
 type CardItemProps = {
-  id: number;
   title: string;
   text: string;
   link: string;
 };
 
-const CardItem = ({ id,title, text, link }: CardItemProps) => {
+const CardItem = ({ title, text, link }: CardItemProps) => {
   return (
-    <div className={styles.card}>
+    <div className={styles.card} >
       <h3 className={`${styles.cardTitle} text-primary`}>
-        {id}
-        <span className={`${styles.cardTitle} text-accent`}>#</span>     
+        <span className={`${styles.cardTitle} text-[#FF7E00]`}>#</span>     
         {title}
       </h3>
-      <p className={`${styles.cardDescription} text-primary`}>
+      <p className={`${styles.cardDescription} text-[#0f006f`}>
         {text}
       </p>
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        
-      >
-        Read More
+      <a href={link} target="_blank" rel="noopener noreferrer"> 
+         <span className= "text-primary">Read More</span>
       </a>
     </div>
   );

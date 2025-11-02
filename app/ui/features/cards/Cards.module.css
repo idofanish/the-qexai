@@ -15,8 +15,7 @@
   border-width: 1;
   padding: 16px;
   margin-bottom: 24px;
-  box-shadow: 0 4px 12px rgba(77, 77, 77, 0.1);
-  
+  box-shadow: 0 4px 12px rgba(77, 77, 77, 0.1);  
   cursor: pointer;
 
   /* 👇 fade-in effect */
@@ -48,7 +47,7 @@
 }
 
 .cardLink:hover {
-  color: #ff9900; /* slightly brighter accent on hover */
+  color: #FF7E00; /* slightly brighter accent on hover */
 }
 
 @keyframes fadeInUp {

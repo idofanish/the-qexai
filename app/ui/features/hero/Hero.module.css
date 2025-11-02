@@ -22,6 +22,7 @@
 .heroSubtitle {
   font-size: 1.15rem; /* text-lg */
   font-weight: 200; /* font-light */
+  
 }
 
 .textDeepBlue{
@@ -29,7 +30,7 @@
 }
 
 .textAmber{
-  color: #ffbd59;
+  color: #FF7E00;
 }
 
 

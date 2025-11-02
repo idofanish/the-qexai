@@ -1,36 +1,54 @@
-// Header.tsx
+// app/components/Header.tsx
 'use client';
 import React, { useEffect, useState } from 'react';
 
-export default function Header() {
+
+interface NavLink {
+  label: string;
+  href: string;
+}
+
+interface HeaderData {
+  siteName: string;
+  highlight: string;
+  navLinks: NavLink[];
+}
+
+// Only client-side logic: scroll gradient
+export default function Header({ data }: { data: HeaderData }) {
   const [scroll, setScroll] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY;
-      setScroll(scrolled);
-    };
+    const handleScroll = () => setScroll(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Calculate color gradient stop based on scroll
-  const gradientWidth = Math.min(scroll / 5, 100); // max 100%
+  const gradientWidth = Math.min(scroll / 5, 100);
+  const parts = data.siteName.split(data.highlight);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md p-4 shadow-sm">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-[#0f006f] font-bold text-xl">The qe
-         <span className="text-[#ffbd59]">XAi</span> 
-         <span>.com</span> 
+        <h1 className="text-[#0f006f] font-semibold text-xl">
+          {parts[0]}
+          <span className="text-[#FF7E00]">{data.highlight}</span>
+          {parts[1]}
         </h1>
         <nav className="space-x-4">
-          <a href="#articles" className="text-[#0f006f] hover:text-[#ffbd59]">Articles</a>
-          <a href="#contact" className="text-[#0f006f] hover:text-[#ffbd59]">Contact</a>
+          {data.navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="text-[#0f006f] hover:text-[#FF7E00]"
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
       </div>
 
-      {/* Gradient line */}
+      {/* Scroll gradient line */}
       <div className="mt-2 h-1 w-full bg-gray-200 relative overflow-hidden rounded">
         <div
           className="h-1 absolute top-0 left-0 rounded"

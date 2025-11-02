@@ -5,6 +5,15 @@
   --spacing-xl: 3rem;      /* 48px */
 }
 
+body {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+  
+}
+
+body.loaded {
+  opacity: 1;
+}
 
 
 /* Font colors */
@@ -13,7 +22,7 @@
 }
 
 .text-accent {
-  color: #ffb84d; /* orange/yellow accent */
+  color: #FF7E00; /* orange/yellow accent */
 }
 
 /* Typography */
