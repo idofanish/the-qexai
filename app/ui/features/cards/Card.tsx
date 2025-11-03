@@ -24,6 +24,7 @@ const Cards = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  /*
 useEffect(() => {
     fetch('/api/site/cards')
       .then((res) => {
@@ -34,6 +35,18 @@ useEffect(() => {
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
   }, []);
+*/
+useEffect(() => {
+  fetch('/api/site/cards')
+    .then((res) => {
+      if (!res.ok) throw new Error('Failed to load cards');
+      return res.json();
+    })
+    .then((result) => setCards(result.data || []))  // ✅ FIX HERE
+    .catch((err) => setError(err.message))
+    .finally(() => setLoading(false));
+}, []);
+
 
   if (loading) return <>Please wait for the page to load....</>;
   if (error) return <p className="text-red-500 text-center">{error}</p>;
