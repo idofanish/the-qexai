@@ -19,6 +19,20 @@ const breakpointColumnsObj = {
   500: 1,
 };
 
+const StatusMessage = ({ type, message }: { type: 'loading' | 'error'; message: string }) => (
+  <div className="flex flex-col items-center justify-center py-10 text-center">
+    {type === 'loading' ? (
+      <div className="animate-pulse text-gray-500">
+        ⚙️ <span className="ml-2">{message}</span>
+      </div>
+    ) : (
+      <div className="text-red-500">
+        🚫 <span className="ml-2">{message}</span>
+      </div>
+    )}
+  </div>
+);
+
 const Cards = () => {
   const [cards, setCards] = useState<Card[]>([]);
   const [loading, setLoading] = useState(true);
@@ -48,8 +62,9 @@ useEffect(() => {
 }, []);
 
 
-  if (loading) return <>Please wait for the page to load....</>;
-  if (error) return <p className="text-red-500 text-center">{error}</p>;
+if (loading) return <StatusMessage type="loading" message="Please wait, loading cards..." />;
+if (error) return <StatusMessage type="error" message={error} />;
+
 
 
   return (
