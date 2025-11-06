@@ -6,10 +6,15 @@ import styles from './Cards.module.css';
 //import Spinner from '@/app/ui/features/TBD_pageloader/Spinner';
 
 interface Card {
-  id: number;
-  title: string;
-  text: string;
-  link: string;
+    id:number;
+    title: string;
+    tagline: string;
+    description: string;
+    example: string;
+    cta_text: string;
+    cta_link: string;
+    icon:string;
+    order:number;
 }
 
 const breakpointColumnsObj = {
@@ -23,7 +28,7 @@ const StatusMessage = ({ type, message }: { type: 'loading' | 'error'; message: 
   <div className="flex flex-col items-center justify-center py-10 text-center">
     {type === 'loading' ? (
       <div className="animate-pulse text-gray-500">
-        ⚙️ <span className="ml-2">{message}</span>
+        ⚙️ <span className="ml-2">{message}....</span>
       </div>
     ) : (
       <div className="text-red-500">
@@ -75,11 +80,15 @@ if (error) return <StatusMessage type="error" message={error} />;
     >
       {cards.map((item) => (
         <CardItem
-          key={item.id}
-//          id={item.id}
+          key={item.id}            
+          order={item.order}
           title={item.title}
-          text={item.text}
-          link={item.link}
+          tagline={item.tagline}
+          description={item.description}
+          example={item.example}
+          cta_text={item.cta_text}
+          cta_link={item.cta_link}
+          icon={item.icon}
         />
       ))}
     </Masonry>
@@ -87,3 +96,4 @@ if (error) return <StatusMessage type="error" message={error} />;
 };
 
 export default Cards;
+    

@@ -10,12 +10,12 @@
 }
 
 .card {
-  background:  rgb(251, 251, 250);
+  background:  rgb(255, 255, 255);
   border-radius: 5px;
   border-width: 1;
   padding: 16px;
   margin-bottom: 24px;
-  box-shadow: 0 4px 12px rgba(77, 77, 77, 0.1);  
+  box-shadow: 0 4px 12px rgba(198, 196, 196, 0.1);  
   cursor: pointer;
 
   /* 👇 fade-in effect */
@@ -30,13 +30,20 @@
 }
 
 .cardTitle {
-  font-size: 1.2rem;
-  font-weight: 600; /* optional: can also use .font-semibold */
-  margin-bottom: 8px;
+  font-size: 1.85rem;
+  font-weight: 500; /* optional: can also use .font-semibold */
+  margin-bottom: 3px;
+  
+}
+
+.cardTagline {
+  font-size: 1.19rem;
+  font-weight: 500; /* optional: can also use .font-semibold */  
+  margin-bottom: 2.5px;
 }
 
 .cardDescription {
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   margin-bottom: 12px;
 }
 
