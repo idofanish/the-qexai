@@ -3,24 +3,35 @@ import React from "react";
 import styles from "./Cards.module.css";
 
 type CardItemProps = {
+  id?:number;
   title: string;
-  text: string;
-  link: string;
+  tagline: string;
+  description: string;
+  example: string;
+  cta_text: string;
+  cta_link: string;
+  icon:string;
+  order:number;
+  
+  
 };
 
-const CardItem = ({ title, text, link }: CardItemProps) => {
+const CardItem = ({ title, tagline, description,example, cta_text,cta_link,icon,order}: CardItemProps) => {
   return (
-    <div className={styles.card} >
-      <h3 className={`${styles.cardTitle} text-primary`}>
-        <span className={`${styles.cardTitle} text-[#FF7E00]`}>#</span>     
+    <div className={styles.card}>
+      <h1 className={`${styles.cardTitle} text-primary`}>{order}
+        <span className={`text-[#FF7E00]`}>#</span>     
         {title}
-      </h3>
-      <p className={`${styles.cardDescription} text-[#0f006f`}>
-        {text}
+      </h1>
+
+      <p className={`${styles.cardTagline} text-[#4682B4]`}>
+       {tagline}
       </p>
-      <a href={link} target="_blank" rel="noopener noreferrer"> 
-         <span className= "text-primary">Read More</span>
-      </a>
+      <p className={`${styles.cardDescription} text-[#191970]`}>{description}</p> 
+      <a href={cta_link} target="_blank" rel="noopener noreferrer"  className= "text-[#1d4973]"> 
+         ➤ {cta_text}......
+         <p>{icon} </p>
+      </a>      
     </div>
   );
 };

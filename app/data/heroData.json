@@ -1,8 +1,10 @@
 {
   "title": "Welcome to TheQExAI.com",
   "titleHighlight": "xAI",
-  "subtitle": "Evaluate and eXplain systems/models with",
+  "subtitle_part1": "Testing, Evaluation, Verification, Validation, and eXplainability practices in AI systems",
+  "subtitle_part2": "— grounded in Quality Engineering and Assurance principles.",
   "subtitleHighlight": "X",
-  "subtitle1": "plain systems/models with Quality Engineering",
-  "subtitleUnderline": "Quality Engineering"
+   "taglines": "Bridging Quality Engineering and AI Assurance",
+  "taglines_Underline1": "Quality Engineering",
+  "taglines_Underline2": "AI Assurance"
 }
