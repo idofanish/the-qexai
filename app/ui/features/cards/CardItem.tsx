@@ -24,16 +24,14 @@ const CardItem = ({ title, tagline, description,example, cta_text,cta_link,icon,
         {title}
       </h1>
 
-      <p className={`${styles.cardTagline} text-[#0f006f]`}>
+      <p className={`${styles.cardTagline} text-[#4682B4]`}>
        {tagline}
       </p>
-      
-       <p className={`${styles.cardDescription} text-[#0f006f]`}>{description}</p> 
-      <a href={cta_link} target="_blank" rel="noopener noreferrer"  className= "text-[#0f006f]"> 
-         <span>{cta_text}....</span>
+      <p className={`${styles.cardDescription} text-[#191970]`}>{description}</p> 
+      <a href={cta_link} target="_blank" rel="noopener noreferrer"  className= "text-[#1d4973]"> 
+         ➤ {cta_text}......
          <p>{icon} </p>
-      </a>
-      
+      </a>      
     </div>
   );
 };
