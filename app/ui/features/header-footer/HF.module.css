@@ -1,0 +1,22 @@
+
+.logoBG{
+  background-color: #a7d8e7;
+  background-size: 100% 2px;
+  background-position: 10 10%;
+  border-radius: 5px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+
+.textDeepBlue{
+  color: #0f006f;
+}
+
+.textAmber{
+  color: #FF7E00;
+}
+
+.footerBG{
+   background-color: #a7d8e7;   
+}
