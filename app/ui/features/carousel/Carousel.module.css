@@ -1,0 +1,76 @@
+/*app/ui/features/acarousel/Carousel.module.css*/
+
+.textCarousel {
+  width: 100%;
+  overflow: hidden;  
+  padding: 1rem;
+  }
+
+.textTrack {
+  display: flex;
+  width: max-content;
+  animation-name: scroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+.textCarousel:hover .textTrack {
+  animation-play-state: paused;
+  
+}
+
+.textItem {
+  white-space: nowrap;
+  margin-right: 2rem;
+  padding-left: 6;
+  padding-right: 6;
+  font-weight: 450;
+  font-size: 1rem;
+  color: #0f006f;
+  background-color: #a7d8e7;
+  border-radius: 5;
+}
+
+/* Infinite scrolling keyframes */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .textItem {
+    font-size: 0.9rem;
+    margin-right: 1.5rem;
+  }
+}
+
+
+/* Infinite scroll animation */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .textItem {
+    font-size: 0.9rem;
+    margin-right: 1.5rem;
+  }
+}
+
+/* Infinite scroll animation */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .textItem {
+    font-size: 0.9rem;
+    margin-right: 1.5rem;
+  }
+}

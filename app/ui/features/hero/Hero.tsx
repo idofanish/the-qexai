@@ -14,18 +14,7 @@ interface HeroData {
   taglines_Underline2: string;
 }
 
-/*
-{
-  "title": "Welcome to TheQExAI.com",
-  "titleHighlight": "xAI",
-  "subtitle_part1": "Testing, Evaluation, Verification, Validation, and eXplainability practices in AI systems",
-  "subtitle_part2": "— grounded in Quality Engineering and Assurance principles.",
-  "subtitleHighlight": "X",
-  "taglines": "Bridging Quality Engineering and AI Assurance",
-  "taglines_Underline1": "Quality Engineering",
-  "taglines_Underline2": "AI Assurance"
-}
-  */
+
 
 export default function Hero({ data }: { data: HeroData }) {
   const titleParts = data.title.split(data.titleHighlight);

@@ -1,6 +1,7 @@
 // app/components/Header.tsx
 'use client';
 import React, { useEffect, useState } from 'react';
+import styles from './HF.module.css';
 
 
 interface NavLink {
@@ -31,9 +32,10 @@ export default function Header({ data }: { data: HeaderData }) {
     <header className="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md p-4">
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-[#0f006f] font-semibold text-xl">
-          {parts[0]}
+          <span className={`${styles.logoBG} ${styles.textDeepBlue}`}>{parts[0]}
           <span className="text-[#FF7E00]">{data.highlight}</span>
-          {parts[1]}
+            {parts[1]}
+          </span>
         </h1>
         <nav className="space-x-4">
           {data.navLinks.map((link) => (
