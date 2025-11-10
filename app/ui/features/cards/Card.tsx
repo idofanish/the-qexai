@@ -1,22 +1,10 @@
-//app/ui/features/cards/Card.tsx
 'use client';
-import React, { useEffect, useState } from 'react';
+
+import React from 'react';
 import Masonry from 'react-masonry-css';
 import CardItem from './CardItem';
 import styles from './Cards.module.css';
-//import Spinner from '@/app/ui/features/TBD_pageloader/Spinner';
-
-interface Card {
-    id:number;
-    title: string;
-    tagline: string;
-    description: string;
-    example: string;
-    cta_text: string;
-    cta_link: string;
-    icon:string;
-    order:number;
-}
+import { useCardsData } from '@/app/ui/context/CardsDataContext';
 
 const breakpointColumnsObj = {
   default: 4,
@@ -40,38 +28,10 @@ const StatusMessage = ({ type, message }: { type: 'loading' | 'error'; message: 
 );
 
 const Cards = () => {
-  const [cards, setCards] = useState<Card[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { cards, loading, error } = useCardsData();
 
-  /*
-useEffect(() => {
-    fetch('/api/site/cards')
-      .then((res) => {
-        if (!res.ok) throw new Error('Failed to load cards');
-        return res.json();
-      })
-      .then((data) => setCards(data))
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, []);
-*/
-useEffect(() => {
-  fetch('/api/site/cards')
-    .then((res) => {
-      if (!res.ok) throw new Error('Failed to load cards');
-      return res.json();
-    })
-    .then((result) => setCards(result.data || []))  // ✅ FIX HERE
-    .catch((err) => setError(err.message))
-    .finally(() => setLoading(false));
-}, []);
-
-
-if (loading) return <StatusMessage type="loading" message="Please wait, loading cards..." />;
-if (error) return <StatusMessage type="error" message={error} />;
-
-
+  if (loading) return <StatusMessage type="loading" message="Please wait, loading cards..." />;
+  if (error) return <StatusMessage type="error" message={error} />;
 
   return (
     <Masonry
@@ -79,17 +39,17 @@ if (error) return <StatusMessage type="error" message={error} />;
       className={styles.myMasonryGrid}
       columnClassName={styles.myMasonryGridColumn}
     >
-      {cards.map((item) => (
+      {cards.map(item => (
         <CardItem
-          key={item.id}            
+          key={item.id}
           order={item.order}
           title={item.title}
-          tagline={item.tagline}
-          description={item.description}
-          example={item.example}
-          cta_text={item.cta_text}
-          cta_link={item.cta_link}
-          icon={item.icon}
+          tagline={item.tagline || ''}
+          description={item.description || ''}
+          example={item.example || ''}
+          cta_text={item.cta_text || ''}
+          cta_link={item.cta_link || ''}
+          icon={item.icon || ''}
         />
       ))}
     </Masonry>
@@ -97,4 +57,3 @@ if (error) return <StatusMessage type="error" message={error} />;
 };
 
 export default Cards;
-    

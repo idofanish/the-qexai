@@ -12,7 +12,7 @@ type CardItemProps = {
   cta_text: string;
   cta_link: string;
   icon:string;
-  order:number;
+  order?:number;
   
   
 };
@@ -25,7 +25,7 @@ const CardItem = ({ title, tagline, description, cta_text,cta_link,icon,order}: 
         <span className={`${styles.gradientUnderlineAnimated}`}>{title}</span>
       </h1>
 
-      <p className={`${styles.cardTagline}  text-[#250c63]`}>
+      <p className={`${styles.cardTagline} text-gray-700`}>
        {tagline}
       </p>
       <p className={`${styles.cardDescription} text-[#191970]`}>{description}</p> 

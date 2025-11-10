@@ -6,7 +6,7 @@
   justify-content: center;
   text-align: center;
   padding: 1rem 1rem;
-  background: linear-gradient(to bottom, #ffffff, #f9fafb);
+  background:  #ffffff;
   overflow: hidden;
 }
 
@@ -51,6 +51,17 @@
   line-height: 1.25;
   max-width: 48rem; /* ~max-w-3xl */
   opacity: 0;
+}
+
+
+.subTitleBox {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 3px;
+  border-radius: 2px;
+  
 }
 
 .gradientUnderlineAnimated {
