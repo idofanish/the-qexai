@@ -17,19 +17,19 @@ type CardItemProps = {
   
 };
 
-const CardItem = ({ title, tagline, description,example, cta_text,cta_link,icon,order}: CardItemProps) => {
+const CardItem = ({ title, tagline, description, cta_text,cta_link,icon,order}: CardItemProps) => {
   return (
     <div className={styles.card}>
-      <h1 className={`${styles.cardTitle} text-primary`}>{order}
+      <h1 className={`${styles.cardTitle} text-primary`}>
         <span className={`text-[#FF7E00]`}>#</span>     
-        {title}
+        <span className={`${styles.gradientUnderlineAnimated}`}>{title}</span>
       </h1>
 
-      <p className={`${styles.cardTagline} text-[#4682B4]`}>
+      <p className={`${styles.cardTagline}  text-[#250c63]`}>
        {tagline}
       </p>
       <p className={`${styles.cardDescription} text-[#191970]`}>{description}</p> 
-      <a href={cta_link} target="_blank" rel="noopener noreferrer"  className= "text-[#1d4973]"> 
+      <a href={cta_link} target="_blank" rel="noopener noreferrer"  className= "text-[#072d51] sm:text-sm"> 
          ➤ {cta_text}......
          <p>{icon} </p>
       </a>      

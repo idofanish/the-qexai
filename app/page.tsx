@@ -6,25 +6,43 @@ import Carousel from '@/app/ui/features/carousel/Carousel';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'The QExAI.com',
+  title: 'The QExAI – From Quality Assurance to AI Assurance',
   description:
-    'Welcome to The QExAI.com — Where Quality Engineering meets Artificial Intelligence Assurance.',
+    'Advancing from Quality Assurance to AI Assurance — exploring verification, risk control, and validation for trustworthy AI.',
+  keywords: [
+    'AI Assurance',
+    'Quality Assurance',
+    'AI Testing',
+    'Responsible AI',
+    'AI Validation',
+    'AI Reliability',
+    'AI Governance',
+  ],
   openGraph: {
-    title: 'The QExAI.com',
+    title: 'The QExAI – From Quality Assurance to AI Assurance',
     description:
-      'Building confidence in AI systems through structured assurance.',
+      'Advancing from Quality Assurance to AI Assurance — exploring verification, risk control, and validation for trustworthy AI.',
     url: 'https://theqexai.com',
-    siteName: 'The QExAI.com',
+    siteName: 'The QExAI',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'The QExAI.com Banner',
+        alt: 'The QExAI – AI Assurance Reference Hub',
       },
     ],
+    locale: 'en_US',
     type: 'website',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'The QExAI – From Quality Assurance to AI Assurance',
+    description:
+      'Advancing from Quality Assurance to AI Assurance — exploring verification, risk control, and validation for trustworthy AI.',
+    images: ['/og-image.png'],
+  },
+   
 };
 
 export default function HomePage() {
