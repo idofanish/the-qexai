@@ -1,45 +1,29 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react'; // <-- added useRef
+import { useEffect, useRef, useState } from 'react';
+import { useCardsData } from '@/app/ui/context/CardsDataContext';
 import styles from './Carousel.module.css';
 
 export default function Carousel() {
-  const [titles, setTitles] = useState<string[]>([
-    'TSX-AI Assurance Overview',
-    'Testing Strategies',
-    'Data Validation Techniques',
-    'Model Robustness',
-    'Bias Detection',
-    'Explainable AI',
-    'Risk Management',
-    'Performance Metrics',
-    'Security Audits',
-    'TSX-Compliance Checks'
-  ]);
-
+  const { cards, loading, error } = useCardsData();
   const trackRef = useRef<HTMLDivElement>(null);
+  const [duration, setDuration] = useState(15);
 
-  // Dynamic animation duration state
-  const [duration, setDuration] = useState(15); // default 15s
-
-  useEffect(() => {
-    fetch('/api/site/carousel')
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data) && data.length > 0) setTitles(data);
-      })
-      .catch(err => console.error('Failed to fetch carousel titles:', err));
-  }, []);
+  // Only titles for carousel
+  const titles = cards.map(c => c.title);
+  const loopingTitles = [...titles, ...titles];
 
   useEffect(() => {
-    if (trackRef.current) {
+    if (trackRef.current && titles.length > 0) {
       const trackWidth = trackRef.current.scrollWidth / 2; // duplicated titles
       const pixelsPerSecond = 50;
       setDuration(trackWidth / pixelsPerSecond);
     }
   }, [titles]);
 
-  const loopingTitles = [...titles, ...titles];
+  if (loading) return <p>Loading carousel...</p>;
+  if (error) return <p>Error loading carousel: {error}</p>;
+  if (!titles.length) return <p>No carousel data found.</p>;
 
   return (
     <div className={styles.textCarousel}>
@@ -50,7 +34,7 @@ export default function Carousel() {
       >
         {loopingTitles.map((title, idx) => (
           <span key={idx} className={styles.textItem}>
-            <span className={styles.highlight}>#{title}</span>
+            <span className={styles.highlight}>{title}</span>
           </span>
         ))}
       </div>

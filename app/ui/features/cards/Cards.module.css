@@ -59,9 +59,9 @@
 /* --- Card Tagline --- */
 .cardTagline {
   font-family: 'Inter', sans-serif;
-  font-size: 0.875rem; /* ~14px */
-  font-weight: 500;
-  color: #0f006f; /* blue-600 */
+  font-size: 0.999rem; /* ~14px */
+  font-weight: 400;
+  color: gray; 
   line-height: 1.5;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
