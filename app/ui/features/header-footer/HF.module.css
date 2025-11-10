@@ -6,6 +6,7 @@
   border-radius: 5px;
   padding-left: 4px;
   padding-right: 4px;
+  padding-top: -4px;
 }
 
 
@@ -19,4 +20,7 @@
 
 .footerBG{
    background-color: #a7d8e7;   
+   padding-bottom: 1px;
+   
 }
+

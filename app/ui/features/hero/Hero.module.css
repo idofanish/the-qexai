@@ -1,29 +1,112 @@
 
-
 .heroSection {
-  position: relative;
-  margin-top: -6rem; /* adjust if needed */
-  z-index: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 30vh;
-  margin-bottom: var(--spacing-lg); /* 24px space below hero */
+  padding: 1rem 1rem;
+  background: linear-gradient(to bottom, #ffffff, #f9fafb);
+  overflow: hidden;
 }
 
+/* Typography */
 .heroTitle {
-  font-size: 2.25rem; /* text-4xl */
-  font-weight: 600; /* font-semibold */
-  margin-bottom: 0.1rem; /* mb-2 */
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 700;
+  color: #0f006f; /* gray-900 */
+  line-height: 1.25;
+  max-width: 64rem; /* ~max-w-4xl */
+  opacity: 0;
 }
 
-.heroSubtitle {
-  font-size: 1.15rem; /* text-lg */
-  font-weight: 200; /* font-light */
-  
+@media (min-width: 640px) {
+  .heroTitle {
+    font-size: 2.25rem; /* 4xl */
+  }
 }
+
+@media (min-width: 768px) {
+  .heroTitle {
+    font-size: 3rem; /* 5xl */
+  }
+}
+
+.highlight {
+  color: #FF7E00; /* blue-600 */
+}
+
+.heroSubtitle1 {
+  font-size: 1.5rem; /* base */
+  color: #215769; /* gray-700 */
+  line-height: 1.25;
+  max-width: 48rem; /* ~max-w-3xl */
+  opacity: 0;
+}
+
+.heroSubtitle2 {
+  margin-top: 1.4rem; /* mt-6 */
+  font-size: 1rem; /* base */
+  color: #215769; /* gray-700 */
+  line-height: 1.25;
+  max-width: 48rem; /* ~max-w-3xl */
+  opacity: 0;
+}
+
+.gradientUnderlineAnimated {
+  display: inline-block;
+  position: relative;
+}
+
+.gradientUnderlineAnimated::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 3px;
+  background-image: linear-gradient(90deg, #FF7E00);
+  border-radius: 2px;
+  transition: width 0.5s ease-out;
+}
+
+.gradientUnderlineAnimated:hover::after {
+  width: 100%;
+}
+
+
+@media (min-width: 640px) {
+  .heroSubtitle {
+    font-size: 1.125rem; /* sm:text-lg */
+  }
+}
+
+@media (min-width: 768px) {
+  .heroSubtitle {
+    font-size: 1.25rem; /* md:text-xl */
+  }
+}
+
+/* Animation Keyframes */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation Classes */
+.fadeUp {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+.fadeUpDelayed {
+  animation: fadeUp 1s ease-out 0.4s forwards;}
+
 
 .textDeepBlue{
   color: #0f006f;
@@ -35,10 +118,4 @@
 
 
 
-.heroTagline {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #191970;
- 
-}
 

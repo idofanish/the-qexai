@@ -2,27 +2,14 @@
 
 .myMasonryGrid {
   display: flex;
-  margin-left: -16px;
   width: auto;
 }
 
 .myMasonryGridColumn {
   padding-left: 16px;
+  padding-right: 16px;
   background-clip: padding-box;
-}
 
-.card {
-  background:  rgb(255, 255, 255);
-  border-radius: 5px;
-  border-width: 0.8;
-  padding: 16px;
-  margin-bottom: 24px;
-  box-shadow: 0 2px 10px rgba(198, 196, 196, 0.1);  
-  cursor: pointer;
-
-  /* 👇 fade-in effect */
-  opacity: 0;
-  animation: fadeInUp 0.6s ease forwards;
 }
 
 .cardsSection {
@@ -31,21 +18,71 @@
   justify-content: center;
 }
 
-.cardTitle {
-  font-size: 1.75rem;
-  font-weight: 515; /* optional: can also use .font-semibold */
-  margin-bottom: 3px;  
-}
+/* --- Card Container --- */
 
-.cardTagline {
-  font-size: 1.20rem;
-  font-weight: 450; /* optional: can also use .font-semibold */  
-  margin-bottom: 2.0px;
-}
-
-.cardDescription {
-  font-size: 0.98rem;
+.card {
+  background:  rgb(255, 255, 255);  
   margin-bottom: 12px;
+    /* fade-in effect */
+  opacity: 10;
+  animation: fadeInUp 0.6s ease forwards;
+  border: 0.7px solid #dcdde2; /* gray-200 */
+  border-radius: 0.3rem;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+
+}
+
+
+
+/* Hover: soft lift + shadow accent */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.08);
+  border-color: #0f006f; /* blue-600 accent */
+}
+
+/* --- Card Title --- */
+.cardTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem; /* ~20px */
+  font-weight: 600;
+  color: #0f006f; /* gray-900 */
+  line-height: 1.4;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease;
+}
+
+/* --- Card Tagline --- */
+.cardTagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem; /* ~14px */
+  font-weight: 500;
+  color: #0f006f; /* blue-600 */
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* --- Card Description --- */
+.cardDescription {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem; /* ~15px */
+  font-weight: 400;
+  color: #0f006f; /* gray-700 */
+  line-height: 1.6;
+  max-width: 100%;
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+/* Subtle darken on hover */
+.card:hover .cardDescription {
+  color: #0f006f; /* gray-800 */
 }
 
 .cardLink {
@@ -54,9 +91,29 @@
   transition: color 0.2s ease;
 }
 
-.cardLink:hover {
-  color: #FF7E00; /* slightly brighter accent on hover */
+
+
+.gradientUnderlineAnimated {
+  display: inline-block;
+  position: relative;
 }
+
+.gradientUnderlineAnimated::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 3px;
+  background-image: linear-gradient(90deg, #FF7E00);
+  border-radius: 2px;
+  transition: width 0.5s ease-out;
+}
+
+.gradientUnderlineAnimated:hover::after {
+  width: 100%;
+}
+
 
 @keyframes fadeInUp {
   0% {

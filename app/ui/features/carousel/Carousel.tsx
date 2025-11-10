@@ -50,7 +50,7 @@ export default function Carousel() {
       >
         {loopingTitles.map((title, idx) => (
           <span key={idx} className={styles.textItem}>
-            {title}
+            <span className={styles.highlight}>#{title}</span>
           </span>
         ))}
       </div>

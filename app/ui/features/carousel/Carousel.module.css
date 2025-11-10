@@ -26,10 +26,11 @@
   padding-left: 6;
   padding-right: 6;
   font-weight: 450;
-  font-size: 1rem;
+  font-size: 1.04rem;
   color: #0f006f;
-  background-color: #a7d8e7;
-  border-radius: 5;
+  background-color: #a7d8e7;   
+  border-radius: 0.3rem;
+  
 }
 
 /* Infinite scrolling keyframes */
@@ -72,5 +73,40 @@
   .textItem {
     font-size: 0.9rem;
     margin-right: 1.5rem;
+  }
+
+  
+
+.gradientUnderlineAnimated {
+  display: inline-block;
+  position: relative;
+}
+
+.gradientUnderlineAnimated::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 3px;
+  background-image: linear-gradient(90deg, #FF7E00);
+  border-radius: 2px;
+  transition: width 0.5s ease-out;
+}
+
+.gradientUnderlineAnimated:hover::after {
+  width: 100%;
+}
+}
+
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -1,7 +1,7 @@
 // app/components/Footer.tsx
 'use client';
 import React from 'react';
-
+import styles from './HF.module.css';
 interface NavLink {
   label: string;
   href: string;
@@ -20,7 +20,8 @@ interface FooterData {
 
 export default function Footer({ data }: { data: FooterData }) {
   return (
-    <footer className="py-2 bg-blue-950 text-[#FF7E00] text-center"> 
+    <footer className={`${styles.footerBG}  ${styles.textDeepBlue}`}> 
+                      
       <div className="flex justify-center gap-4 mt-2">
         {data.socialLinks.map((link) => (
           <a

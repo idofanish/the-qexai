@@ -1,48 +1,27 @@
 // app/components/Hero.tsx
 'use client';
-import React, { useEffect, useState } from 'react';
 import styles from './Hero.module.css';
-
-interface HeroData {
-  title: string;
-  titleHighlight: string;
-  subtitle_part1: string;
-  subtitle_part2:string;
-  subtitleHighlight: string;
-  taglines: string;
-  taglines_Underline1: string;
-  taglines_Underline2: string;
-}
+import { motion } from 'framer-motion';
 
 
 
-export default function Hero({ data }: { data: HeroData }) {
-  const titleParts = data.title.split(data.titleHighlight);
-  const subtitleParts = data.subtitle_part1.split(data.subtitleHighlight);
-  const taglineSplit1 = data.taglines.split(data.taglines_Underline1);
-  const taglineSplit2 = taglineSplit1[1].split(data.taglines_Underline2);
-  
+export default function Hero() {
 
-  return (
-    <section className={styles.heroSection}>
-      <div className={`${styles.heroTitle} ${styles.textDeepBlue}`}>
-        {titleParts[0]}
-        <span className={styles.textAmber}>{data.titleHighlight}</span>
-        {titleParts[1]}
-      </div>
-      
-      <div className={`${styles.heroSubtitle} ${styles.textDeepBlue}`}>
-        {subtitleParts[0]}
-        <span className={styles.textAmber}>{data.subtitleHighlight}</span>
-        {subtitleParts[1]}          
-      </div>
-      <div className={`${styles.heroTagline}`}>
-        {taglineSplit1[0]}
-        <u>{data.taglines_Underline1}</u>
-        {taglineSplit2[0]}
-        <u>{data.taglines_Underline2}</u>
-      </div>
-      
+    return (
+
+       <section className={styles.heroSection}>
+        <h1 className={`${styles.heroTitle} ${styles.fadeUp}`}>
+          From Quality Assurance to{' '} AI Assurance.
+        </h1>
+
+        <span className="block text-[#0f006f] text-lg sm:text-xl md:text-2xl">
+          Translating Quality Assurance principles into the age of AI —
+        </span>
+        <span className="block text-gray-700 text-base sm:text-lg md:text-xl font-medium">
+          through Testing, Evaluation, Verification & Validation (TEVV), e<span className={styles.highlight}>X</span>
+          plainable practices, and beyond.
+        </span>
+        
     </section>
   );
 }
