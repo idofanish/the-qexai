@@ -11,7 +11,7 @@ export default function Hero() {
           Translating Quality Assurance principles into the age of AI —
         </span>
         <span className="block text-gray-700 text-base sm:text-lg md:text-xl font-medium">{"through "}
-          <span className={styles.subTitleBox}> Testing, Evaluation, Verification & Validation (TEVV), 
+          <span className={styles.subTitleBox}> Testing, Evaluation, Verification & Validation<b> (TEVV)</b>, 
             e<span className={styles.highlight}>X</span>
           plainable practices, and beyond.</span>
         

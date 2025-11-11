@@ -6,7 +6,8 @@
   justify-content: center;
   text-align: center;
   padding: 1rem 1rem;
-  background:  #ffffff;
+  background:   #ffffff, #ffffff;
+;
   overflow: hidden;
 }
 
