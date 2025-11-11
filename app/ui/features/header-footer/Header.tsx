@@ -31,7 +31,7 @@ export default function Header({ data }: { data: HeaderData }) {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-md p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-[#0f006f] font-semibold text-5xl">
+        <h1 className="text-[#0f006f] font-semibold text-3xl">
           <span className={`${styles.logoBG} ${styles.textDeepBlue}`}>{parts[0]}
           <span className="text-[#FF7E00]">{data.highlight}</span>
             {parts[1]}

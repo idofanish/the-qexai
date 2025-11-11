@@ -40,6 +40,7 @@ export async function GET() {
       const { data, error } = await supabase
         .from('carousel')
         .select('title')
+        .eq('isCardDisplayed', 1)  
         .order('id', { ascending: true });
 
       if (!error && data && data.length > 0) {

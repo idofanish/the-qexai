@@ -37,6 +37,7 @@ export async function GET() {
     const { data, error } = await supabase
       .from('cards')
       .select('*')
+      .eq('isCardDisplayed', 1)  
       .order('id', { ascending: true });
 
     if (error) throw error;
