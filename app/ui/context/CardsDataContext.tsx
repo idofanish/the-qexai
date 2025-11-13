@@ -1,10 +1,9 @@
-//app/ui/context/CardsDataContext.tsx
-
 'use client';
 
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
-interface Card {
+// ✅ Export Card type so other files can import
+export interface Card {
   id: number;
   title: string;
   tagline: string;
@@ -21,7 +20,7 @@ interface CachedData {
   data: Card[];
 }
 
-interface CardsDataContextType {
+export interface CardsDataContextType {
   cards: Card[];
   loading: boolean;
   error: string | null;
@@ -47,10 +46,11 @@ export const CardsDataProvider = ({ children }: { children: ReactNode }) => {
   const fetchAndCacheCards = async () => {
     try {
       setLoading(true);
+      console.log('🌐 Trying to fetch fresh card data from API...');
       const res = await fetch('/api/site/cards');
       if (!res.ok) throw new Error('Failed to load cards');
       const result = await res.json();
-      const freshData = result.data || [];
+      const freshData: Card[] = result.data || [];
 
       const cacheEntry: CachedData = {
         timestamp: Date.now(),
@@ -113,4 +113,5 @@ export const CardsDataProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
+// ✅ Export hook for consuming the context
 export const useCardsData = () => useContext(CardsDataContext);
