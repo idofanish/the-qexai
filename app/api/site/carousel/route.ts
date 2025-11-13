@@ -1,25 +1,7 @@
-// app/api/site/carousel/route.ts
 import { NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-import path from 'path';
-import fs from 'fs/promises';
+import { getCards, Card } from '@/app/lib/cardsCache';
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
-
-let supabase: any = null;
-let isSupabaseReady = false;
-
-if (supabaseUrl && supabaseAnonKey) {
-  try {
-    supabase = createClient(supabaseUrl, supabaseAnonKey);
-    isSupabaseReady = true;
-  } catch (err) {
-    console.warn('⚠️ Failed to initialize Supabase client:', err);
-  }
-}
-
-// Hardcoded fallback titles
+// Optional fallback if even getCards fails
 const fallbackTitles = [
   'Route-AI Assurance Overview',
   'Testing Strategies',
@@ -35,37 +17,18 @@ const fallbackTitles = [
 
 export async function GET() {
   try {
-    // 1️⃣ Supabase fetch
-    if (isSupabaseReady) {
-      const { data, error } = await supabase
-        .from('carousel')
-        .select('title')
-        .eq('isCardDisplayed', 1)  
-        .order('id', { ascending: true });
-
-      if (!error && data && data.length > 0) {
-        const titles = data.map((item: any) => item.title);
-        return NextResponse.json(titles);
-      }
-    }
-
-    // 2️⃣ Local JSON fallback
-    try {
-      const jsonPath = path.join(process.cwd(), 'app/data/dataForCarousel.json');
-      const fileData = await fs.readFile(jsonPath, 'utf-8');
-      const jsonData = JSON.parse(fileData);
-      if (Array.isArray(jsonData) && jsonData.length > 0) {
-        const titles = jsonData.map((item: any) => item.title);
-        return NextResponse.json(titles);
-      }
-    } catch (err) {
-      console.warn('⚠️ Failed to read local JSON file:', err);
-    }
-
-    // 3️⃣ Hardcoded fallback
+    const cards: Card[] = await getCards();
+    
+    // Only return titles for the carousel
+    const titles = cards.map(card => card.title);
+    
+    if (titles.length > 0) return NextResponse.json(titles);
+    
+    // Fallback if somehow empty
     return NextResponse.json(fallbackTitles);
-  } catch (err: any) {
-    console.error('❌ Carousel API error:', err.message);
-    return NextResponse.json(fallbackTitles, { status: 200 });
-  }
+    
+  } catch (err) {
+    console.error('❌ Carousel API failed:', err);
+    return NextResponse.json(fallbackTitles);
+   }
 }

@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useCardsData } from '@/app/ui/context/CardsDataContext';
 import styles from './Carousel.module.css';
 
+
+
 export default function Carousel() {
   const { cards, loading, error } = useCardsData();
   const trackRef = useRef<HTMLDivElement>(null);
