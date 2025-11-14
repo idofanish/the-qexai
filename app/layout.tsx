@@ -1,5 +1,5 @@
 // app/layout.tsx
-import '@/app/ui/ui.global.css';
+import './ui/ui.global.css';
 import Header from '@/app/ui/features/header-footer/Header';
 import Footer from '@/app/ui/features/header-footer/Footer';
 import React from 'react';

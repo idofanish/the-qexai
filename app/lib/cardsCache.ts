@@ -1,3 +1,5 @@
+//app/lib/cardsCache.ts
+
 import { createClient } from '@supabase/supabase-js';
 
 // ✅ Card type
@@ -42,45 +44,67 @@ const fallbackCards: Card[] = [
   },
 ];
 
-// ✅ Exported function to get cards
-export async function getCards(): Promise<Card[]> {
-  const now = Date.now();
-
-  // Return cached cards if fresh
-  if (cachedCards && now - cacheTime < CACHE_DURATION_MS) {
-    console.log('⚡ Using cached cards');
-    return cachedCards;
-  }
-
+// ✅ Core fetcher (used by both getCards and refreshCards)
+async function fetchCardsFromSupabase(): Promise<Card[]> {
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
 
   if (!supabaseUrl || !supabaseAnonKey) {
     console.warn('⚠️ Supabase env missing. Returning fallback cards.');
-    cachedCards = fallbackCards;
-    cacheTime = now;
-    return cachedCards;
+    return fallbackCards;
   }
 
   const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-  try {
-    const { data, error } = await supabase
-      .from('cards')
-      .select('*')
-      .eq('isCardDisplayed', 1)
-      .order('id', { ascending: true });
+  const { data, error } = await supabase
+    .from('cards')
+    .select('*')
+    .eq('isCardDisplayed', 1)
+    .order('id', { ascending: true });
 
-    if (error || !data) throw error;
+  if (error || !data) {
+    console.error('❌ Failed fetching cards from Supabase:', error);
+    return fallbackCards;
+  }
 
-    cachedCards = data;
-    cacheTime = now;
-    console.log('✅ Fetched cards from Supabase');
-    return cachedCards;
-  } catch (err) {
-    console.error('❌ Failed fetching cards. Returning fallback.', err);
-    cachedCards = fallbackCards;
-    cacheTime = now;
+  console.log('✅ Successfully fetched cards from Supabase');
+  return data;
+}
+
+// ✅ Exported function to get cards (uses cache)
+export async function getCards(): Promise<Card[]> {
+  const now = Date.now();
+
+  if (cachedCards && now - cacheTime < CACHE_DURATION_MS) {
+    console.log('⚡ Using cached cards');
     return cachedCards;
   }
+
+  console.log('🔄 Cache expired or empty. Fetching new data...');
+  cachedCards = await fetchCardsFromSupabase();
+  cacheTime = now;
+  return cachedCards;
+}
+// ✅ Clear the in-memory cache manually
+export function resetCardsCache() {
+  console.log('🧹 Clearing in-memory cards cache');
+  cachedCards = null;
+  cacheTime = 0;
+}
+
+
+// ✅ Exported manual refresh function (forces a fresh fetch)
+export async function refreshCardsCache(): Promise<Card[]> {
+  console.log('♻️ Manually refreshing card cache...');
+  cachedCards = await fetchCardsFromSupabase();
+  cacheTime = Date.now();
+  return cachedCards;
+}
+
+// ✅ For debugging in dev (optional)
+export function getCacheStatus() {
+  return {
+    lastUpdated: cacheTime ? new Date(cacheTime).toLocaleString() : 'Never',
+    cacheValid: cachedCards !== null,
+  };
 }
