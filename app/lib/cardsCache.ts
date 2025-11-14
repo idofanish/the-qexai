@@ -15,10 +15,16 @@ export type Card = {
   order?: number;
 };
 
+
+
 // In-memory cache
 let cachedCards: Card[] | null = null;
 let cacheTime = 0;
 const CACHE_DURATION_MS = 1000 * 60 * 60 * 24 * 2; // 2 days
+
+// module scope near cachedCards & cacheTime
+let cacheVersion = Date.now(); // init with timestamp
+let lastUpdated = cacheTime || 0;
 
 // ✅ Fallback cards (must satisfy Card type)
 const fallbackCards: Card[] = [
@@ -98,13 +104,18 @@ export async function refreshCardsCache(): Promise<Card[]> {
   console.log('♻️ Manually refreshing card cache...');
   cachedCards = await fetchCardsFromSupabase();
   cacheTime = Date.now();
+  cacheVersion = Date.now(); // or cacheVersion++
+  lastUpdated = cacheTime;
+  console.log('Cache version updated at:', new Date(cacheTime).toLocaleString());
   return cachedCards;
 }
 
 // ✅ For debugging in dev (optional)
 export function getCacheStatus() {
+  console.log('Cache version updated at:', new Date(cacheTime).toLocaleString());
   return {
-    lastUpdated: cacheTime ? new Date(cacheTime).toLocaleString() : 'Never',
-    cacheValid: cachedCards !== null,
+    cacheVersion,
+    lastUpdated,
+    cacheExpiresAt: cacheTime + CACHE_DURATION_MS,
   };
 }

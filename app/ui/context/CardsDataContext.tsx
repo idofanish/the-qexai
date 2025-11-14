@@ -76,7 +76,7 @@ export const CardsDataProvider = ({ children }: { children: ReactNode }) => {
   }
 };
 
-
+/*
   useEffect(() => {
     const cached = localStorage.getItem(CACHE_KEY);
     if (cached) {
@@ -99,8 +99,70 @@ export const CardsDataProvider = ({ children }: { children: ReactNode }) => {
 
     fetchAndCacheCards();
   }, []);
+*/
+const CACHE_KEY = 'qexai_cards_cache_v1';
+useEffect(() => {
+  let mounted = true;
+  async function init() {
+    setLoading(true);
+    try {
+      // 1) read local cache
+      const localRaw = localStorage.getItem(CACHE_KEY);
+      const localParsed = localRaw ? JSON.parse(localRaw) : null;
+      const localVersion = localParsed?.cacheVersion ?? 0;
 
-  const isDev = process.env.NODE_ENV === 'development';
+      // 2) check server version (tiny call)
+      const verRes = await fetch('/api/site/cards/version');
+      if (!verRes.ok) {
+        // if server version check fails, fallback to local
+        if (localParsed && mounted) {
+          setCards(localParsed.data);
+        } else {
+          // fetch full payload as fallback
+          const r = await fetch('/api/site/cards');
+          const j = await r.json();
+          if (j.success) {
+            setCards(j.data);
+            localStorage.setItem(CACHE_KEY, JSON.stringify({ cacheVersion: j.cacheVersion ?? Date.now(), data: j.data, ts: Date.now() }));
+          }
+        }
+        return;
+      }
+
+      const verJson = await verRes.json();
+      const serverVersion = verJson.cacheVersion ?? 0;
+
+      if (localParsed && localVersion === serverVersion) {
+        // local is up-to-date
+        if (mounted) setCards(localParsed.data);
+      } else {
+        // local stale or absent -> fetch full payload and update localStorage
+        const r = await fetch('/api/site/cards');
+        const j = await r.json();
+        if (j.success) {
+          if (mounted) setCards(j.data);
+          localStorage.setItem(CACHE_KEY, JSON.stringify({ cacheVersion: serverVersion, data: j.data, ts: Date.now() }));
+        } else if (localParsed && mounted) {
+          setCards(localParsed.data); // best-effort fallback
+        }
+      }
+    } catch (err) {
+      console.error('Init cards failed', err);
+      // fallback to local if exists
+      const localRaw = localStorage.getItem(CACHE_KEY);
+      if (localRaw) {
+        const local = JSON.parse(localRaw);
+        setCards(local.data || []);
+      }
+    } finally {
+      if (mounted) setLoading(false);
+    }
+  }
+  init();
+  return () => { mounted = false; };
+}, []);
+
+const isDev = process.env.NODE_ENV === 'development';
 const [toast, setToast] = useState<string | null>(null);
 const [toastError, setToastError] = useState<boolean>(false);
 

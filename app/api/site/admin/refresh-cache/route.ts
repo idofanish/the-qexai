@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
-import { getCards, resetCardsCache } from '@/app/lib/cardsCache';
+import { getCards, resetCardsCache ,getCacheStatus } from '@/app/lib/cardsCache';
 
 export async function GET(req: Request) {
   const apiKey = req.headers.get('x-api-key');
@@ -14,9 +14,9 @@ export async function GET(req: Request) {
 
     resetCardsCache();
     await getCards();
-    await revalidatePath('/');
+    const status = getCacheStatus();
+    return NextResponse.json({ success: true, message: 'Refreshed', cacheVersion: status.cacheVersion, lastUpdated: status.lastUpdated });
 
-    return NextResponse.json({ message: '✅ Cards cache refreshed successfully.' });
   } catch (error: any) {
     console.error('❌ Error refreshing cache:', error);
     return NextResponse.json(
