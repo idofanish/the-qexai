@@ -49,9 +49,10 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <CardsDataProvider>
-      <Hero/>
-      <Carousel/>
+      <Hero />
+      <Carousel />
       <Cards />
     </CardsDataProvider>
   );
 }
+// app/page.tsx
