@@ -1,7 +1,8 @@
-import { NextResponse } from 'next/server';
-import { getCards, Card } from '@/app/lib/cardsCache';
+// app/api/site/carousel/route.ts
 
-// Optional fallback if even getCards fails
+import { NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
+
 const fallbackTitles = [
   'Route-AI Assurance Overview',
   'Testing Strategies',
@@ -16,19 +17,30 @@ const fallbackTitles = [
 ];
 
 export async function GET() {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_ANON_KEY;
+
+  if (!url || !key) {
+    return NextResponse.json(fallbackTitles);
+  }
+
+  const supabase = createClient(url, key);
+
   try {
-    const cards: Card[] = await getCards();
-    
-    // Only return titles for the carousel
-    const titles = cards.map(card => card.title);
-    
-    if (titles.length > 0) return NextResponse.json(titles);
-    
-    // Fallback if somehow empty
-    return NextResponse.json(fallbackTitles);
-    
+    const { data, error } = await supabase
+      .from('cards')
+      .select('title')
+      .eq('isCardDisplayed', 1)
+      .order('id', { ascending: true });
+
+    if (error || !data) return NextResponse.json(fallbackTitles);
+
+    const titles = data.map((row: any) => row.title);
+
+    return NextResponse.json(titles.length ? titles : fallbackTitles);
+
   } catch (err) {
-    console.error('❌ Carousel API failed:', err);
+    console.error('❌ Carousel route error:', err);
     return NextResponse.json(fallbackTitles);
-   }
+  }
 }

@@ -1,3 +1,4 @@
+//app/ui/features/cards/Card.tsx
 'use client';
 
 import React from 'react';
@@ -41,8 +42,7 @@ const Cards = () => {
     >
       {cards.map(item => (
         <CardItem
-          key={item.id}
-          order={item.order}
+          key={item.id}          
           title={item.title}
           tagline={item.tagline || ''}
           description={item.description || ''}
@@ -50,10 +50,11 @@ const Cards = () => {
           cta_text={item.cta_text || ''}
           cta_link={item.cta_link || ''}
           icon={item.icon || ''}
+          order={item.order || 0}
         />
       ))}
     </Masonry>
   );
 };
-
+ 
 export default Cards;
