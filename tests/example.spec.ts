@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('homepage has The QexAI.com title', async ({ page }) => {
+test('homepage has TEVVX title', async ({ page }) => {
   await page.goto('http://localhost:3000');
-  await expect(page).toHaveTitle("Home:The QexAI.com")
+  await expect(page).toHaveTitle("TEVVX – From Quality Assurance to AI Assurance")
 });

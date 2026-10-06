@@ -25,8 +25,12 @@ This is a reference page to keep some important areas where focused to find and 
     │       └── prepare-commit-msg
     ├── **app/**
     │   ├── **api/**
+    │   │   ├── **healthcheck/**
+    │   │   │   └── route.ts
     │   │   └── **site/**
     │   │       ├── **cards/**
+    │   │       │   └── route.ts
+    │   │       ├── **carousel/**
     │   │       │   └── route.ts
     │   │       ├── **footer/**
     │   │       │   └── route.ts
@@ -47,13 +51,19 @@ This is a reference page to keep some important areas where focused to find and 
     │   │   └── getHeroData.ts
     │   ├── page.tsx
     │   └── **ui/**
+    │       ├── **context/**
+    │       │   └── CardsDataContext.tsx
     │       ├── **features/**
     │       │   ├── **cards/**
     │       │   │   ├── Card.tsx
     │       │   │   ├── CardItem.tsx
     │       │   │   └── Cards.module.css
+    │       │   ├── **carousel/**
+    │       │   │   ├── Carousel.module.css
+    │       │   │   └── Carousel.tsx
     │       │   ├── **header-footer/**
     │       │   │   ├── Footer.tsx
+    │       │   │   ├── HF.module.css
     │       │   │   └── Header.tsx
     │       │   └── **hero/**
     │       │       ├── Hero.module.css
@@ -71,12 +81,10 @@ This is a reference page to keep some important areas where focused to find and 
     ├── pnpm-lock.yaml
     ├── postcss.config.js
     ├── **public/**
-    │   ├── TheQexAI.ico
     │   ├── favicon.ico
     │   ├── file.svg
     │   ├── globe.svg
     │   ├── next.svg
-    │   ├── og-image.png
     │   ├── vercel.svg
     │   └── window.svg
     ├── tailwind.config.ts
