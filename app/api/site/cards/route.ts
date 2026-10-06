@@ -47,7 +47,11 @@ export async function GET(): Promise<NextResponse> {
       return errorResponse('Supabase credentials missing');
     }
 
+    const clientStart = performance.now();
     const supabase = createClient(url, key);
+    const clientEnd = performance.now();
+
+    const queryStart = performance.now();
 
     const { data, error } = await supabase
       .from('cards')
@@ -57,6 +61,12 @@ export async function GET(): Promise<NextResponse> {
       .eq('isCardDisplayed', 1)
       .order('order', { ascending: true })
       .order('id', { ascending: true });
+
+    const queryEnd = performance.now();
+
+    console.log(
+      `[cards] createClient=${(clientEnd - clientStart).toFixed(1)}ms query=${(queryEnd - queryStart).toFixed(1)}ms rows=${data?.length ?? 0}`
+    );
 
     if (error) {
       return errorResponse('Database query failed', error);
