@@ -5,6 +5,11 @@ import Carousel from '@/app/ui/features/carousel/Carousel';
 import { CardsDataProvider } from '@/app/ui/context/CardsDataContext';
 
 import type { Metadata } from 'next';
+import { getHeroData } from './lib/getHeroData';
+
+
+const heroData = await getHeroData();
+
 
 export const metadata: Metadata = {
   title: 'TEVVX – From Quality Assurance to AI Assurance',
@@ -49,7 +54,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <CardsDataProvider>
-      <Hero />
+      <Hero data={heroData} />
       <Carousel />
       <Cards />
     </CardsDataProvider>
