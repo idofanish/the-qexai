@@ -2,6 +2,8 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
+export const revalidate = 300;
+
 type CardRow = {
   id: number;
   title: string;
